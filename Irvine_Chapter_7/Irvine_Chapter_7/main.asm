@@ -1,0 +1,34 @@
+sa_71 PROTO
+sa_72 PROTO
+sa_73 PROTO
+sa_74 PROTO
+sa_75 PROTO
+sa_76 PROTO
+sa_77 PROTO
+sa_78 PROTO
+sa_79_fixed PROTO
+sa_710 PROTO
+
+aw_71 PROTO
+aw_72 PROTO
+aw_73 PROTO
+aw_74 PROTO
+aw_75 PROTO
+aw_76 PROTO
+aw_77 PROTO
+aw_78 PROTO
+aw_79 PROTO
+aw_710 PROTO
+aw_711 PROTO
+aw_712 PROTO
+aw_716 PROTO
+
+.data
+
+.code
+main PROC
+	call aw_716
+
+	ret
+main ENDP
+end
