@@ -1,0 +1,63 @@
+Microsoft (R) Macro Assembler (x64) Version 14.24.28314.0   11/14/20 00:23:28
+Problem 3-						     Page 1 - 1
+
+
+				TITLE Problem 3-4
+
+				; Write a program that defines symbolic names for several string literals. Use eaqch symbolic name in a variable definition
+
+ = "Hello World"		hello TEXTEQU <"Hello World">
+ = "The program exited with	exitcode TEXTEQU <"The program exited with code 0">
+    code 0"
+ = hello, " from Assembly"	asm TEXTEQU <hello, " from Assembly!">
+
+ 00000000			.data
+ 00000000 48 65 6C 6C 6F	helloworld BYTE hello, "!"
+	   20 57 6F 72 6C
+	   64 21
+ 0000000C 54 68 65 20 70	labl BYTE exitcode
+	   72 6F 67 72 61
+	   6D 20 65 78 69
+	   74 65 64 20 77
+	   69 74 68 20 63
+	   6F 64 65 20 30
+ 0000002A 48 65 6C 6C 6F	helloasm BYTE asm
+	   20 57 6F 72 6C
+	   64 20 66 72 6F
+	   6D 20 41 73 73
+	   65 6D 62 6C 79
+
+ 00000000			.code
+ 00000000			p34 proc
+ 00000000  48/ 8D 05			lea rax, [helloworld]
+	   00000000 R
+ 00000007  C3				ret
+ 00000008			p34 endp
+
+				end
+Microsoft (R) Macro Assembler (x64) Version 14.24.28314.0   11/14/20 00:23:28
+Problem 3-						     Symbols 2 - 1
+
+
+
+
+Procedures, parameters, and locals:
+
+                N a m e                 Type     Value    Attr
+
+p34  . . . . . . . . . . . . . .	P 	 00000000 _TEXT	Length= 00000008 Public
+
+
+Symbols:
+
+                N a m e                 Type     Value    Attr
+
+asm  . . . . . . . . . . . . . .	Text   	 hello, " from Assembly"
+exitcode . . . . . . . . . . . .	Text   	 "The program exited with code 0"
+helloasm . . . . . . . . . . . .	Byte	 0000002A _DATA	
+helloworld . . . . . . . . . . .	Byte	 00000000 _DATA	
+hello  . . . . . . . . . . . . .	Text   	 "Hello World"
+labl . . . . . . . . . . . . . .	Byte	 0000000C _DATA	
+
+	   0 Warnings
+	   0 Errors
