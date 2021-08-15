@@ -17,7 +17,7 @@ Str_length PROTO
 WriteString PROTO
 
 ; Writes a null-terminated string to the console window.
-; Pass the string's offset in the EDX register.
+; Pass the string's offset in the RDX register.
 ;-----------------------------------------------------------
 
 ;-----------------------------------------------------------
