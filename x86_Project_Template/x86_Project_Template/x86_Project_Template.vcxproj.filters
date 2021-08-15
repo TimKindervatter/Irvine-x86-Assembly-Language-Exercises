@@ -18,13 +18,11 @@
     <MASM Include="main.asm">
       <Filter>Source Files</Filter>
     </MASM>
-    <MASM Include="Problem_8_5.asm">
-      <Filter>Resource Files</Filter>
-    </MASM>
-  </ItemGroup>
-  <ItemGroup>
-    <Library Include="..\..\Irvine\irvine\Irvine32.lib">
+    <MASM Include="x64_source_file.asm">
       <Filter>Source Files</Filter>
-    </Library>
+    </MASM>
+    <MASM Include="x86_source_file.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
   </ItemGroup>
 </Project>
