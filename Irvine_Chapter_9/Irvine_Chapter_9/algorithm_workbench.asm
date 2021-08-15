@@ -53,8 +53,8 @@ Crlf PROTO
 
 	two_dimensional_array DWORD 00001000h, 20003000h, 40005000h, 60007000h
 	ROW_SIZE = ($ - two_dimensional_array)
-						  DWORD  80009000h, 0A000B000h, 0C000D000h, 0E000F000h
-						  DWORD  04201337h, 69694242h, 0DEADBEEFh, 0BADF00Dh
+						  DWORD 80009000h, 0A000B000h, 0C000D000h, 0E000F000h
+						  DWORD 04201337h, 69694242h, 0DEADBEEFh, 0BADF00Dh
 
 	sourcew WORD 0000h, 1000h, 2000h, 3000h, 4000h, 5000h, 6000h, 7000h
 	targetw WORD 0000h, 1000h, 2000h, 3000h, 0DEADh, 0BEEFh, 6000h, 7000h
@@ -78,6 +78,10 @@ Crlf PROTO
 
 	string_to_make_lowercase1 BYTE "THIS STRING WILL BE LOWERCASE", 0
 	string_to_make_lowercase2 BYTE "tHis STrIng WiLL aLSo bE loWeRCasE", 0
+
+	myArray DWORD 00001000h, 20003000h, 40005000h, 60007000h
+	MY_ARRAY_ROW_SIZE = ($ - myArray)
+			DWORD 80009000h, 0A000B000h, 0C000D000h, 0E000F000h
 
 .code
 
@@ -411,5 +415,24 @@ aw_98 PROC
 
 	ret
 aw_98 ENDP
+
+
+aw_911 PROC
+	; Assuming that EBX contains a row index into a two-dimensional array of 32-bit integers named myArray and EDI contains the index of a column, 
+	; write a single statement that moves the content of the given array element into the EAX register.
+
+	push ebp
+	mov ebp, esp
+
+	mov esi, MY_ARRAY_ROW_SIZE
+	mov ebx, 1
+	imul ebx, esi
+	mov edi, 3
+	mov eax, myArray[ebx + edi*TYPE myArray]
+
+	mov esp, ebp
+	pop ebp
+	ret
+aw_911 ENDP
 
 end

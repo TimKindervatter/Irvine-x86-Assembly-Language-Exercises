@@ -36,6 +36,12 @@ Crlf PROTO
 	string_to_trim4 BYTE "String to trim", 0
 	string_to_trim5 BYTE "@String to trim"
 
+	qwordArray QWORD 0000100020003000h, 4000500060007000h, 80009000A000B000h, 0C000D000E000F000h
+
+	myArray QWORD 0000100020003000h, 4000500060007000h
+	MY_ARRAY_ROW_SIZE = ($ - myArray)
+			QWORD 80009000A000B000h, 0C000D000E000F000h
+
 .code
 
 ; 32-bit implementation of Str_trim:
@@ -196,5 +202,40 @@ aw_99 PROC
 
 	ret
 aw_99 ENDP
+
+
+aw_910 PROC
+	; Show an example of a base-index operand in 64-bit mode
+
+	push rbp
+	mov rbp, rsp
+
+	mov rsi, OFFSET qwordArray
+	mov rdi, 2
+	mov rax, [rsi + rdi*TYPE qwordArray]
+
+	mov rsp, rbp
+	pop rbp
+	ret	
+aw_910 ENDP
+
+
+aw_912 PROC
+	; Assuming that RBX contains a row index into a two-dimensional array of 64-bit integers named myArray and RDI contains the index of a column, 
+	; write a single statement that moves the content of the given array element into the RAX register.
+
+	push rbp
+	mov rbp, rsp
+
+	mov rsi, MY_ARRAY_ROW_SIZE
+	mov rbx, 1
+	imul rbx, rsi
+	mov rdi, 1
+	mov rax, myArray[rbx + rdi*TYPE myArray]
+
+	mov rsp, rbp
+	pop rbp
+	ret
+aw_912 ENDP
 
 end
