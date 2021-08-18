@@ -18,10 +18,19 @@
     <MASM Include="main.asm">
       <Filter>Source Files</Filter>
     </MASM>
-    <MASM Include="algorithm_workbench.asm">
+    <MASM Include="algorithm_workbench_x86.asm">
       <Filter>Source Files</Filter>
     </MASM>
     <MASM Include="algorithm_workbench_x64.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="Problem_9_1.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="Problem_9_2.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="Problem_9_3.asm">
       <Filter>Source Files</Filter>
     </MASM>
   </ItemGroup>

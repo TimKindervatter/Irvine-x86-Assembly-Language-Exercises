@@ -16,6 +16,10 @@ ELSE
 	aw_97 PROTO
 	aw_98 PROTO
 	aw_911 PROTO
+
+	p91 PROTO
+	p92 PROTO
+	p93 PROTO
 ENDIF
 
 .data
@@ -23,7 +27,7 @@ ENDIF
 .code
 
 main PROC
-	call aw_912
+	call p93
 	ret
 main ENDP
 
