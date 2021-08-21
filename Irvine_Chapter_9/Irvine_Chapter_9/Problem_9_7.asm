@@ -9,72 +9,47 @@ ENDIF
 .model flat, stdcall
 .stack 4096
 
+sieve_of_Eratosthenes PROTO
+validate_sieve PROTO
+WriteString PROTO
+
 .data
-	sieve_array BYTE 65000 DUP(?)
-	sentinel BYTE "!"
-	sqrt_N DWORD ?
+	sieve_array65000 BYTE 65000 DUP(?)
+
+	sieve_array10 BYTE 10 DUP(?)
+	sieve_array100 BYTE 100 DUP(?)
+	sieve_array1000 BYTE 1000 DUP(?)
+	sieve_array10000 BYTE 10000 DUP(?)
+	sieve_array100K BYTE 100000 DUP(?)
+
+	expected_results DWORD 100000 DUP(?)
+
+	failed BYTE "Assertion Failed!", 0
+	succeeded BYTE "All tests succeeded!", 0
 .code
 
-
-sieve_array_of_Eratosthenes PROC
+call_and_validate_sieve PROC
 	sieve_array_pointer EQU [ebp + 8]
-	N EQU [ebp + 12]
+	sieve_array_length EQU [ebp + 12]
 
 	push ebp
 	mov ebp, esp
 
-	; Indexing sieve_array_pointer doesn't work very well because it's just a macro that is just expanded to [ebp + 8]. 
-	; This typically results in incorrect offsets. So save endpoints of sieve_array in registers instead.
-	mov edx, sieve_array_pointer	; Save beginning of sieve array	
-	mov ebx, sieve_array_pointer	
-	add ebx, N						; Save end of sieve array
+	push sieve_array_length
+	push sieve_array_pointer
+	call sieve_of_Eratosthenes
 
-	; Compute the square root of N, which will be used as the stopping condition later. Store it to memory for later use.
-	mov ecx, N
-	cvtsi2ss xmm0, ecx
-	sqrtss xmm1, xmm0
-	cvtss2si ecx, xmm1
-	mov DWORD PTR [sqrt_N], ecx
-
-	mov eax, 2
-	inc BYTE PTR [edx]				; 0 is not prime
-	inc BYTE PTR [edx + 1]			; 1 Is not prime
-next_prime:
-	mov esi, sieve_array_pointer
-	add esi, eax					; Start this loop at the index of the next prime in the sequence.
-
-inner_loop:
-	add esi, eax					; Point to the next multiple of the current prime
-
-	cmp esi, ebx					; EBX points to the end of the array. Compare the pointer to the next multiple, and break if it is beyond the end of the array so that we don't write out of bounds.
-	jge break
-
-	mov BYTE PTR [esi], 1			; "Cross off" the next multiple of the current prime
-
-	jmp inner_loop
-
-break:
-	; Starting from 1 after the last prime, search for the next zero entry (i.e. the next prime)
-	lea edi, [edx + eax + 1]
-	mov al, 0
-
-	mov ecx, N						; Make sure scasb does not terminate early because ecx reaches 0
-	cld
-	repne scasb
-	dec edi
-
-	; Find the offset of the pointer to the zero that was found by scasb. This is exactly the next prime number, which will be used in the next iteration.
-	mov eax, edi
-	sub eax, sieve_array_pointer
-
-	cmp eax, DWORD PTR [sqrt_N]				; The well-known optimization of the sieve_array lets us quit once we reach sqrt(N), and in this case, N = 65,000
-	jb next_prime
-
+	push sieve_array_length
+	push sieve_array_pointer
+	call validate_sieve
+	mov edi, OFFSET expected_results
+	add edi, sieve_array_length
+	cmp eax, [edi]
+	
 	mov esp, ebp
 	pop ebp
-
 	ret 8
-sieve_array_of_Eratosthenes ENDP
+call_and_validate_sieve ENDP
 
 
 p97 PROC
@@ -88,25 +63,53 @@ p97 PROC
 
 	; For this program, create a 65,000 element array and display all primes between 2 and 65,000.
 	; Declare the array in an uninitialized data segment and use STOSB to fill it with zeros.
+
+	mov DWORD PTR expected_results[10], 4
+	mov DWORD PTR expected_results[100], 25
+	mov DWORD PTR expected_results[1000], 168
+	mov DWORD PTR expected_results[10000], 1229
+	mov DWORD PTR expected_results[65000], 6493
+	mov DWORD PTR expected_results[100000], 9592
 	
-	push LENGTHOF sieve_array
-	push OFFSET sieve_array
-	call sieve_array_of_Eratosthenes
 
-	mov ecx, LENGTHOF sieve_array
-	xor edx, edx
-	mov esi, OFFSET sieve_array
-sum_primes:
-	cmp BYTE PTR [esi], 0
-	jne not_prime
-	inc edx
-not_prime:
-	inc esi
-	loop sum_primes
+	push LENGTHOF sieve_array10
+	push OFFSET sieve_array10
+	call call_and_validate_sieve
+	jne assertion_failed
 
-	mov ecx, LENGTHOF sieve_array
-	sub ecx, edx				; Should be 0x0000195D, which is 6493 in decimal. This is the number of primes less than 65000
+	push LENGTHOF sieve_array100
+	push OFFSET sieve_array100
+	call call_and_validate_sieve
+	jne assertion_failed
 
+	push LENGTHOF sieve_array1000
+	push OFFSET sieve_array1000
+	call call_and_validate_sieve
+	jne assertion_failed
+
+	push LENGTHOF sieve_array10000
+	push OFFSET sieve_array10000
+	call call_and_validate_sieve
+	jne assertion_failed
+
+	push LENGTHOF sieve_array65000
+	push OFFSET sieve_array65000
+	call call_and_validate_sieve
+	jne assertion_failed
+
+	push LENGTHOF sieve_array100K
+	push OFFSET sieve_array100K
+	call call_and_validate_sieve
+	jne assertion_failed
+
+	mov edx, OFFSET succeeded
+	call WriteString
+	jmp all_succeeded
+
+assertion_failed:
+	mov edx, OFFSET failed
+	call WriteString
+all_succeeded:
 	ret
 p97 ENDP
 
