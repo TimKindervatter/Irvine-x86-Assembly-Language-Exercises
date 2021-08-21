@@ -14,9 +14,20 @@ ENDIF
 .code
 
 
+;----------------------------------------------------------------------------------------------------------------------------------------------
 sieve_of_Eratosthenes PROC
-	sieve_array_pointer EQU [ebp + 8]
-	N EQU [ebp + 12]
+	sieve_array_pointer EQU [ebp + 8]	; Base address of the sieve array whose indices indicate whether a number is prime or not
+	N EQU [ebp + 12]					; The sieve will find all the primes up to N
+
+; Returns: Nothing, but the sieve array will be populated such that elements whose index is prime will have a value of 0 
+		   ; and the elements whose index is not prime will have a value of 1. 
+;		   E.g. sieve_array[0] = 0
+;			    sieve_array[1] = 0
+;			    sieve_array[2] = 1
+;			    sieve_array[3] = 1
+;			    sieve_array[4] = 0
+;		   etc.
+;----------------------------------------------------------------------------------------------------------------------------------------------
 
 	push ebp
 	mov ebp, esp
@@ -79,9 +90,14 @@ break:
 sieve_of_Eratosthenes ENDP
 
 
+;----------------------------------------------------------------------------------------------------------------------------------------------
 validate_sieve PROC
-	sieve_array_ptr EQU [ebp + 8]
-	sieve_array_length EQU [ebp + 12]
+	sieve_array_ptr EQU [ebp + 8]			; Base address of the sieve array whose indices indicate whether a number is prime or not
+	n EQU [ebp + 12]						; The sieve will have only populated the array up to n, so no need to validate beyond that point
+
+; Returns:
+;	EAX = Number of primes found up to n
+;----------------------------------------------------------------------------------------------------------------------------------------------
 
 	push ebp
 	mov ebp, esp
@@ -89,7 +105,7 @@ validate_sieve PROC
 	push ecx
 	push esi
 
-	mov ecx, sieve_array_length				; Populate ecx with the length of the array, so we loop over the full array
+	mov ecx, n								; Populate ecx with n, the number of elements populated by the sieve, so we loop over all elements that were populated
 	xor eax, eax							; Initialize counter to zero
 	mov esi, sieve_array_ptr
 sum_primes:

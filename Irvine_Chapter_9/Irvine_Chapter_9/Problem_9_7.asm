@@ -22,29 +22,38 @@ WriteString PROTO
 	succeeded BYTE "All tests succeeded!", 0
 .code
 
+;----------------------------------------------------------------------------------------------------------------------------------------------
 call_and_validate_sieve PROC
-	sieve_array_pointer EQU [ebp + 8]
-	sieve_array_length EQU [ebp + 12]
+	sieve_array_pointer EQU [ebp + 8]	; Base address of the sieve array whose indices indicate whether a number is prime or not
+	N EQU [ebp + 12]					; The sieve will find all the primes up to N
+
+; Returns: Nothing, but the Zero flag will be set if the number of primes found by the sieve matches the expected value. 
+;		   The Zero flag will be clear if the number of primes found by the sieve does not match the expected value.
+;----------------------------------------------------------------------------------------------------------------------------------------------
 
 	push ebp
 	mov ebp, esp
 
-	mov ecx, sieve_array_length
+	pushad
+
+	mov ecx, N
 	mov edi, sieve_array_pointer
 	mov al, 0
 	rep stosb
 
-	push sieve_array_length
+	push N
 	push sieve_array_pointer
 	call sieve_of_Eratosthenes
 
-	push sieve_array_length
+	push N
 	push sieve_array_pointer
 	call validate_sieve
 	mov edi, OFFSET expected_results
-	add edi, sieve_array_length
+	add edi, N
 	cmp eax, [edi]
 	
+	popad
+
 	mov esp, ebp
 	pop ebp
 	ret 8
