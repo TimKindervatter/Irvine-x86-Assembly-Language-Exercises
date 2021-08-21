@@ -20,6 +20,8 @@ ELSE
 	p91 PROTO
 	p92 PROTO
 	p93 PROTO
+	p94 PROTO
+	p95 PROTO
 ENDIF
 
 .data
@@ -27,7 +29,7 @@ ENDIF
 .code
 
 main PROC
-	call p93
+	call p95
 	ret
 main ENDP
 
