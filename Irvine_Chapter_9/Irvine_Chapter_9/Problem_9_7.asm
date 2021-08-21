@@ -14,13 +14,7 @@ validate_sieve PROTO
 WriteString PROTO
 
 .data
-	sieve_array65000 BYTE 65000 DUP(?)
-
-	sieve_array10 BYTE 10 DUP(?)
-	sieve_array100 BYTE 100 DUP(?)
-	sieve_array1000 BYTE 1000 DUP(?)
-	sieve_array10000 BYTE 10000 DUP(?)
-	sieve_array100K BYTE 100000 DUP(?)
+	sieve_array BYTE 100000 DUP(?)
 
 	expected_results DWORD 100000 DUP(?)
 
@@ -34,6 +28,11 @@ call_and_validate_sieve PROC
 
 	push ebp
 	mov ebp, esp
+
+	mov ecx, sieve_array_length
+	mov edi, sieve_array_pointer
+	mov al, 0
+	rep stosb
 
 	push sieve_array_length
 	push sieve_array_pointer
@@ -72,33 +71,33 @@ p97 PROC
 	mov DWORD PTR expected_results[100000], 9592
 	
 
-	push LENGTHOF sieve_array10
-	push OFFSET sieve_array10
+	push 10
+	push OFFSET sieve_array
 	call call_and_validate_sieve
 	jne assertion_failed
 
-	push LENGTHOF sieve_array100
-	push OFFSET sieve_array100
+	push 100
+	push OFFSET sieve_array
 	call call_and_validate_sieve
 	jne assertion_failed
 
-	push LENGTHOF sieve_array1000
-	push OFFSET sieve_array1000
+	push 1000
+	push OFFSET sieve_array
 	call call_and_validate_sieve
 	jne assertion_failed
 
-	push LENGTHOF sieve_array10000
-	push OFFSET sieve_array10000
+	push 10000
+	push OFFSET sieve_array
 	call call_and_validate_sieve
 	jne assertion_failed
 
-	push LENGTHOF sieve_array65000
-	push OFFSET sieve_array65000
+	push 65000
+	push OFFSET sieve_array
 	call call_and_validate_sieve
 	jne assertion_failed
 
-	push LENGTHOF sieve_array100K
-	push OFFSET sieve_array100K
+	push 100000
+	push OFFSET sieve_array
 	call call_and_validate_sieve
 	jne assertion_failed
 
