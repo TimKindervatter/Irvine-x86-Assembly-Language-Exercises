@@ -31,7 +31,7 @@ generate_letter_matrix PROC
 
 	call Randomize
 	mov ecx, 16
-	mov esi, matrix
+	mov edi, matrix
 
 loop_head:
 	mov eax, 2
@@ -42,17 +42,16 @@ loop_head:
 generate_consonant:
 	mov eax, LENGTHOF consonants
 	call RandomRange
-	mov bl, consonants[eax]
+	mov al, consonants[eax]
 	jmp store_character
 
 generate_vowel:
 	mov eax, LENGTHOF vowels
 	call RandomRange
-	mov bl, vowels[eax]
+	mov al, vowels[eax]
 
 store_character:
-	mov BYTE PTR [esi], bl
-	inc esi
+	stosb
 	loop loop_head
 
 	popad
@@ -85,12 +84,11 @@ write_character:
 	call Crlf
 
 no_newline:
-	mov al, [esi]
+	lodsb
 	call WriteChar
 	mov al, " "
 	call WriteChar
 
-	inc esi
 	cmp BYTE PTR [esi], 0
 	loop write_character
 
