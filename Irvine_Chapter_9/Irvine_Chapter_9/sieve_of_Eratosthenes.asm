@@ -4,6 +4,8 @@ ELSE
 	END_IF_X64 EQU <>
 ENDIF
 
+END_IF_X64
+
 .686
 .xmm
 .model flat, stdcall

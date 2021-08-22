@@ -4,6 +4,8 @@ ELSE
 	END_IF_X64 EQU <>
 ENDIF
 
+END_IF_X64
+
 .386
 .model flat, stdcall
 .stack 4096
