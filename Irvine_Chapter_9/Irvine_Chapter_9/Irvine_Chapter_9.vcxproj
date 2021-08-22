@@ -163,6 +163,8 @@
     <MASM Include="Problem_9_5.asm" />
     <MASM Include="Problem_9_6.asm" />
     <MASM Include="Problem_9_7.asm" />
+    <MASM Include="Problem_9_8.asm" />
+    <MASM Include="sieve_of_Eratosthenes.asm" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
