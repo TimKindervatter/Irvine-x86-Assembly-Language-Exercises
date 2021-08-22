@@ -2,6 +2,8 @@ IFDEF RAX
 	aw_99 PROTO
 	aw_910 PROTO
 	aw_912 PROTO
+
+	p99 PROTO
 ELSE
 	.386
 	.model flat, stdcall
@@ -32,7 +34,7 @@ ENDIF
 .code
 
 main PROC
-	call p98
+	call p99
 	ret
 main ENDP
 

@@ -51,5 +51,8 @@
     <MASM Include="sieve_of_Eratosthenes.asm">
       <Filter>Source Files</Filter>
     </MASM>
+    <MASM Include="Problem_9_9.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
   </ItemGroup>
 </Project>
