@@ -153,11 +153,13 @@
   <ItemGroup>
     <MASM Include="algorithm_workbench_x86.asm" />
     <MASM Include="algorithm_workbench_x64.asm" />
+    <MASM Include="Chapter_9_utilities.asm" />
     <MASM Include="main.asm">
       <FileType>Document</FileType>
     </MASM>
     <MASM Include="Problem_9_1.asm" />
     <MASM Include="Problem_9_10.asm" />
+    <MASM Include="Problem_9_11.asm" />
     <MASM Include="Problem_9_2.asm" />
     <MASM Include="Problem_9_3.asm" />
     <MASM Include="Problem_9_4.asm" />

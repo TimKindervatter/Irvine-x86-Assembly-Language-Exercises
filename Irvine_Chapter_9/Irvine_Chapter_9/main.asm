@@ -28,6 +28,9 @@ ELSE
 	p97 PROTO
 	p98 PROTO
 	p910 PROTO
+	p911 PROTO
+
+	test_is_character_in_set PROTO
 ENDIF
 
 .data
