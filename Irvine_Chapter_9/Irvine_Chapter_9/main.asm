@@ -38,7 +38,7 @@ ENDIF
 .code
 
 main PROC
-	call p910
+	call p911
 	ret
 main ENDP
 
