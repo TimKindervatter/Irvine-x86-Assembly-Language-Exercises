@@ -162,6 +162,7 @@
     <MASM Include="Problem_9_11.asm" />
     <MASM Include="Problem_9_12.asm" />
     <MASM Include="Problem_9_13.asm" />
+    <MASM Include="Problem_9_14.asm" />
     <MASM Include="Problem_9_2.asm" />
     <MASM Include="Problem_9_3.asm" />
     <MASM Include="Problem_9_4.asm" />
