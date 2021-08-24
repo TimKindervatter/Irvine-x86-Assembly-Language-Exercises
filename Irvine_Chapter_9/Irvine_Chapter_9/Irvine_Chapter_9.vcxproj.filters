@@ -63,5 +63,8 @@
     <MASM Include="Chapter_9_utilities.asm">
       <Filter>Source Files</Filter>
     </MASM>
+    <MASM Include="Problem_9_12.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
   </ItemGroup>
 </Project>
