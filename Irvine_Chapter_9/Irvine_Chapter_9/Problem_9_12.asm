@@ -43,20 +43,23 @@ calc_row_sum PROC
 	push esi
 	push edi
 
+	; Point esi to the start of the row to be summed
 	mov eax, row_size
 	mov ebx, row_index
-	mul ebx
+	mul ebx								; ebx = row_size * row_index
 	mov esi, array_offset
-	add esi, eax
+	add esi, eax						; esi = array_offset + row_size * row_index = pointer to start of row to be summed
 
-	xor eax, eax
+	; Determine the number of elements in the row
+	xor eax, eax						; Clear eax for use in div instruction
 	mov eax, row_size
 	mov ebx, array_type
-	div ebx
-	mov ecx, eax
+	div ebx								; ebx = row_size/array_type = number of elements in row
+	mov ecx, eax						; Put the number elements in ecx as the loop counter
 
 	xor eax, eax
 
+	; Determine what type the array is and jump to the appropriate loop
 	mov edi, TYPE BYTE
 	cmp array_type, edi
 	jne not_byte_array
@@ -72,6 +75,7 @@ not_word_array:
 	jne done
 	jmp dword_loop_head
 
+	; Sum the elements in the row. Different accumulator registers and pointer types must be used depending on the type of the array
 byte_loop_head:
 	add al, BYTE PTR [esi]
 	loop byte_loop_head
