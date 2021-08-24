@@ -30,6 +30,7 @@ ELSE
 	p910 PROTO
 	p911 PROTO
 	p912 PROTO
+	p913 PROTO
 
 	test_is_character_in_set PROTO
 ENDIF
@@ -39,7 +40,7 @@ ENDIF
 .code
 
 main PROC
-	call p912
+	call p913
 	ret
 main ENDP
 
