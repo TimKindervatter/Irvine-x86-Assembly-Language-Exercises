@@ -75,6 +75,7 @@ Crlf PROTO
 	string_to_trim3 BYTE "@", 0
 	string_to_trim4 BYTE "String to trim", 0
 	string_to_trim5 BYTE "@String to trim"
+	string_to_trim6 BYTE 0									; Empty String
 
 	string_to_make_lowercase1 BYTE "THIS STRING WILL BE LOWERCASE", 0
 	string_to_make_lowercase2 BYTE "tHis STrIng WiLL aLSo bE loWeRCasE", 0
@@ -305,6 +306,9 @@ aw_97 PROC
 	call trim_at_symbol
 
 	push OFFSET string_to_trim5
+	call trim_at_symbol
+
+	push OFFSET string_to_trim6
 	call trim_at_symbol
 
 	mov esp, ebp

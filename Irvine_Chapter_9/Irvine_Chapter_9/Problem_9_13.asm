@@ -32,6 +32,7 @@ Crlf PROTO
 	string3 BYTE "#", 0
 	string4 BYTE "ABC", 0
 	string5 BYTE "ABC#", 0
+	string6 BYTE 0									; Empty string
 
 .code
 
@@ -129,6 +130,9 @@ p913 PROC
 	call trim_hash_symbol
 
 	push OFFSET string5
+	call trim_hash_symbol
+
+	push OFFSET string6
 	call trim_hash_symbol
 
 	ret
