@@ -27,6 +27,8 @@ ELSE
 	p106 PROTO
 	p107 PROTO
 	p108 PROTO
+	p109 PROTO
+	p1010 PROTO
 ENDIF
 
 .data
@@ -34,7 +36,7 @@ ENDIF
 .code
 
 main PROC
-	call p108
+	call p1010
 	ret
 main ENDP
 
