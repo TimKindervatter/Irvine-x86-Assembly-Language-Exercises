@@ -18,6 +18,15 @@ ELSE
 	aw_1013 PROTO
 	aw_1014 PROTO
 	aw_1015 PROTO
+
+	p101 PROTO
+	p102 PROTO
+	p103 PROTO
+	p104 PROTO
+	p105 PROTO
+	p106 PROTO
+	p107 PROTO
+	p108 PROTO
 ENDIF
 
 .data
@@ -25,7 +34,7 @@ ENDIF
 .code
 
 main PROC
-	call aw_1015
+	call p108
 	ret
 main ENDP
 

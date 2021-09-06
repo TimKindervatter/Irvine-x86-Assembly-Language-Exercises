@@ -30,5 +30,29 @@
     <MASM Include="algorithm_workbench_x86.asm">
       <Filter>Source Files</Filter>
     </MASM>
+    <MASM Include="Problem_10_1.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="Problem_10_2.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="Problem_10_3.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="Problem_10_4.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="Problem_10_5.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="Problem_10_6.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="Problem_10_7.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="Problem_10_8.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
   </ItemGroup>
 </Project>

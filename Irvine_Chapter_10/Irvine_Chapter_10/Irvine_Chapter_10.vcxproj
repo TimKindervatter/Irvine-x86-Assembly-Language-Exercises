@@ -155,6 +155,14 @@
     <MASM Include="main.asm">
       <FileType>Document</FileType>
     </MASM>
+    <MASM Include="Problem_10_1.asm" />
+    <MASM Include="Problem_10_2.asm" />
+    <MASM Include="Problem_10_3.asm" />
+    <MASM Include="Problem_10_4.asm" />
+    <MASM Include="Problem_10_5.asm" />
+    <MASM Include="Problem_10_6.asm" />
+    <MASM Include="Problem_10_7.asm" />
+    <MASM Include="Problem_10_8.asm" />
     <MASM Include="short_answer.asm" />
     <MASM Include="x64_source_file.asm" />
     <MASM Include="x86_source_file.asm" />
