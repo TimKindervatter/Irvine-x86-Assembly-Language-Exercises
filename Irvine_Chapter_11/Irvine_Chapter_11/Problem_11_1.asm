@@ -12,6 +12,8 @@ END_IF_X64
 
 INCLUDE Irvine32.inc
 
+insert_null_terminator PROTO
+
 .data
 	console_handle HANDLE ?
 
@@ -33,13 +35,8 @@ MyReadString PROC
 	mov console_handle, eax
 	INVOKE ReadConsole, console_handle, string_pointer, max_characters, ADDR num_characters_entered, 0
 
-	; Search for the carriage return character, which indicates the end of the user-entered string
-	mov edi, string_pointer
-	mov al, 0Dh
-	repne scasb 						
-	dec edi
-	
-	mov BYTE PTR [edi], 0				; Insert Null terminator
+	push string_pointer
+	call insert_null_terminator
 
 	mov eax, num_characters_entered
 

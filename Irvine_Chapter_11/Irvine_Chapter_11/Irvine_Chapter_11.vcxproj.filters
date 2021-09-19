@@ -24,5 +24,20 @@
     <MASM Include="Problem_11_1.asm">
       <Filter>Source Files</Filter>
     </MASM>
+    <MASM Include="Problem_11_2.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="insert_null_terminator.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="Problem_11_3.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="Problem_11_4.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="Problem_11_5.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
   </ItemGroup>
 </Project>

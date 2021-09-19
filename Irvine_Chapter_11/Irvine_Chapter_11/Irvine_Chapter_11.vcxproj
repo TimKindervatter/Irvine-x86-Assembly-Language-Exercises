@@ -152,10 +152,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <MASM Include="algorithm_workbench.asm" />
+    <MASM Include="insert_null_terminator.asm" />
     <MASM Include="main.asm">
       <FileType>Document</FileType>
     </MASM>
     <MASM Include="Problem_11_1.asm" />
+    <MASM Include="Problem_11_2.asm" />
+    <MASM Include="Problem_11_3.asm" />
+    <MASM Include="Problem_11_4.asm" />
+    <MASM Include="Problem_11_5.asm" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
