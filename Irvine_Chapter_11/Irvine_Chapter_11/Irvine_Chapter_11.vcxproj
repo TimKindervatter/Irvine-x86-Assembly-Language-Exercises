@@ -157,6 +157,8 @@
       <FileType>Document</FileType>
     </MASM>
     <MASM Include="Problem_11_1.asm" />
+    <MASM Include="Problem_11_10.asm" />
+    <MASM Include="Problem_11_11.asm" />
     <MASM Include="Problem_11_2.asm" />
     <MASM Include="Problem_11_3.asm" />
     <MASM Include="Problem_11_4.asm" />
@@ -164,6 +166,7 @@
     <MASM Include="Problem_11_6.asm" />
     <MASM Include="Problem_11_7.asm" />
     <MASM Include="Problem_11_8.asm" />
+    <MASM Include="Problem_11_9.asm" />
   </ItemGroup>
   <ItemGroup>
     <None Include="console_string_macros.inc" />

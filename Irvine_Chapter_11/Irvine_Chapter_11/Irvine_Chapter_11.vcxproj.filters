@@ -48,6 +48,15 @@
     <MASM Include="Problem_11_8.asm">
       <Filter>Source Files</Filter>
     </MASM>
+    <MASM Include="Problem_11_9.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="Problem_11_10.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="Problem_11_11.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
   </ItemGroup>
   <ItemGroup>
     <None Include="console_string_macros.inc">
