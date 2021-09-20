@@ -39,5 +39,19 @@
     <MASM Include="Problem_11_5.asm">
       <Filter>Source Files</Filter>
     </MASM>
+    <MASM Include="Problem_11_6.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="Problem_11_7.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="Problem_11_8.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="console_string_macros.inc">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

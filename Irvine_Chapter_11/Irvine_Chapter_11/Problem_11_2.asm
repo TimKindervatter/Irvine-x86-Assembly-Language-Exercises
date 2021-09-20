@@ -11,20 +11,9 @@ END_IF_X64
 .stack 4096
 
 INCLUDE Irvine32.inc
+INCLUDE console_string_macros.inc
 
-insert_null_terminator PROTO
 Crlf PROTO
-
-mWriteStringToConsole MACRO string
-	INVOKE WriteConsole, output_handle, ADDR string, SIZEOF string, ADDR num_characters, 0
-ENDM
-
-mReadStringFromConsole MACRO string_buffer
-	INVOKE ReadConsole, input_handle, ADDR string_buffer, SIZEOF string_buffer, ADDR num_characters, 0
-
-	push OFFSET string_buffer
-	call insert_null_terminator
-ENDM
 
 .data
 	output_handle HANDLE ?
@@ -60,32 +49,32 @@ p112 PROC
 	INVOKE GetStdHandle, STD_INPUT_HANDLE
 	mov input_handle, eax
 
-	mWriteStringToConsole first_name_prompt
-	mReadStringFromConsole first_name
+	mWriteStringToConsole first_name_prompt, num_characters
+	mReadStringFromConsole first_name, num_characters
 
-	mWriteStringToConsole last_name_prompt
-	mReadStringFromConsole last_name
+	mWriteStringToConsole last_name_prompt, num_characters
+	mReadStringFromConsole last_name, num_characters
 
-	mWriteStringToConsole age_prompt
-	mReadStringFromConsole age
+	mWriteStringToConsole age_prompt, num_characters
+	mReadStringFromConsole age, num_characters
 
-	mWriteStringToConsole phone_number_prompt
-	mReadStringFromConsole phone_number
+	mWriteStringToConsole phone_number_prompt, num_characters
+	mReadStringFromConsole phone_number, num_characters
 	
 	call Crlf
 	call Crlf
 
-	mWriteStringToConsole first_name_string
-	mWriteStringToConsole first_name
+	mWriteStringToConsole first_name_string, num_characters
+	mWriteStringToConsole first_name, num_characters
 
-	mWriteStringToConsole last_name_string
-	mWriteStringToConsole last_name
+	mWriteStringToConsole last_name_string, num_characters
+	mWriteStringToConsole last_name, num_characters
 
-	mWriteStringToConsole age_string
-	mWriteStringToConsole age
+	mWriteStringToConsole age_string, num_characters
+	mWriteStringToConsole age, num_characters
 
-	mWriteStringToConsole phone_number_string
-	mWriteStringToConsole phone_number
+	mWriteStringToConsole phone_number_string, num_characters
+	mWriteStringToConsole phone_number, num_characters
 	
 	ret
 p112 ENDP

@@ -19,6 +19,9 @@ ELSE
 	p113 PROTO
 	p114 PROTO
 	p115 PROTO
+	p116 PROTO
+	p117 PROTO
+	p118 PROTO
 ENDIF
 
 .data
@@ -26,7 +29,7 @@ ENDIF
 .code
 
 main PROC
-	call p115
+	call p118
 	ret
 main ENDP
 

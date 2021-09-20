@@ -72,14 +72,14 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Assembly\Irvine\irvine;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Assembly\Irvine_Chapter_11\Irvine_Chapter_11;C:\Assembly\Irvine\irvine;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\Assembly\Irvine\irvine;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Assembly\Irvine_Chapter_11\Irvine_Chapter_11;C:\Assembly\Irvine\irvine;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -161,6 +161,12 @@
     <MASM Include="Problem_11_3.asm" />
     <MASM Include="Problem_11_4.asm" />
     <MASM Include="Problem_11_5.asm" />
+    <MASM Include="Problem_11_6.asm" />
+    <MASM Include="Problem_11_7.asm" />
+    <MASM Include="Problem_11_8.asm" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="console_string_macros.inc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
