@@ -11,12 +11,15 @@ aw_126 PROTO
 aw_129 PROTO
 aw_1210 PROTO
 
+p121 PROTO
+p122 PROTO
+
 .data
 
 .code
 
 main PROC
-	call aw_1210
+	call p122
 	ret
 main ENDP
 

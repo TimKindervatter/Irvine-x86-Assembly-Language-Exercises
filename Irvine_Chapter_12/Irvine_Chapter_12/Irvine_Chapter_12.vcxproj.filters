@@ -21,5 +21,11 @@
     <MASM Include="algorithm_workbench.asm">
       <Filter>Source Files</Filter>
     </MASM>
+    <MASM Include="Problem_12_1.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="Problem_12_2.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
   </ItemGroup>
 </Project>
