@@ -14,13 +14,14 @@ aw_1210 PROTO
 p121 PROTO
 p122 PROTO
 p123 PROTO
+p124 PROTO
 
 .data
 
 .code
 
 main PROC
-	call p123
+	call p124
 	ret
 main ENDP
 
