@@ -17,13 +17,14 @@ p123 PROTO
 p124 PROTO
 p125 PROTO
 p126 PROTO
+p127 PROTO
 
 .data
 
 .code
 
 main PROC
-	call p126
+	call p127
 	ret
 main ENDP
 
